@@ -30,5 +30,6 @@ steps:
 
 - script: |
     pip install pytest pytest-azurepipelines pytest-cov
-    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
+    pytest test_linear_model.py -v --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
+    # pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
   displayName: 'pytest'
