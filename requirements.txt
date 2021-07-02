@@ -2,4 +2,3 @@ sklearn
 joblib
 numpy
 pytest
-math
