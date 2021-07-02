@@ -4,12 +4,18 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
+    Python27:
+      python.version: '2.7'
+    Python35:
+      python.version: '3.5'
+    Python36:
+      python.version: '3.6'
     Python37:
       python.version: '3.7'
 
@@ -25,6 +31,6 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pytest
+    pip install pytest pytest-azurepipelines pytest-cov
+    pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
   displayName: 'pytest'
